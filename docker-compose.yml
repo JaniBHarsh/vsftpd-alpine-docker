@@ -1,0 +1,23 @@
+version: "3.5"
+services:
+  vsftpd:
+    container_name: vsftpd
+    image: vsftpd
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "20:20"
+      - "21:21"
+      - "990-990"
+      - "40000-40100:40000-40100"
+    volumes:
+      - ~/ftp/:/home/ftp/:rw
+      - ~/logs/vsftpd/:/var/log/vsftpd/:rw
+      - ~/ftp/users:/etc/vsftpd/users:rw
+      - ~/ftp/users/conf:/etc/vsftpd/vsftpd_user_conf:rw
+    environment:
+      - PASV_ADDRESS=127.0.0.1
+      - PASV_MIN_PORT=40000
+      - PASV_MAX_PORT=40100
+      - FTP_SSL=yes
