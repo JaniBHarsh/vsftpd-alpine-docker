@@ -7,17 +7,6 @@ Supports passive mode and virtual users.
 
 `/etc/vsftpd/vsftpd.conf`
 
-## How to run
-
-Use `docker-compose`
-
-**Modify `docker-compose.yml` to fit you need.**
-
-```
-git clone https://github.com/epoweripione/docker-vsftpd-alpine.git
-cd docker-vsftpd-alpine
-docker-compose up -d
-```
 
 ## Something to do
 `docker exec -it <Container ID> sh`
